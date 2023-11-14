@@ -1,8 +1,8 @@
-import {BasePredator, PredatorIcon, PredatorName} from './predators';
+import {BasePrey, PreyIcon, PreyName} from './prey';
 
-export class Lion extends BasePredator {
-  name = PredatorName.Lion;
-  icon = PredatorIcon.Lion;
+export class Rabbit extends BasePrey {
+  name = PreyName.Rabbit;
+  icon = PreyIcon.Rabbit;
   position = {
     x: 0,
     y: 0,
@@ -16,7 +16,7 @@ export class Lion extends BasePredator {
     };
   }
 
-  attackMove() {
+  move() {
     return {
       x: 1,
       y: 1,

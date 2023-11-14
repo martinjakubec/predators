@@ -1,8 +1,8 @@
-import { BasePredator } from "./predators";
+import {BasePredator, PredatorIcon, PredatorName} from './predators';
 
 export class Bear extends BasePredator {
-  name = 'Bear';
-  icon = '🐻';
+  name = PredatorName.Bear;
+  icon = PredatorIcon.Bear;
   position = {
     x: 0,
     y: 0,
