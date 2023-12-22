@@ -6,9 +6,10 @@ import {
   getAnimalInstance,
   getPredatorInstance,
 } from './utils/getAnimalInstance';
-import {map01} from './maps/01';
 import {BasePrey, PreyIcon, PreyName} from './Prey/prey';
-
+import {generateMapData} from './maps/generateMapData';
+import {MapData} from './maps/types';
+import * as mapData from './maps';
 interface GridProps {
   gridHeight: number;
   gridWidth: number;
@@ -24,8 +25,12 @@ interface GridState {
 }
 
 export function Grid({gridHeight, gridWidth}: GridProps) {
+  const [currentLevelData, setCurrentLevelData] = useState<MapData>(
+    mapData['map01'].default
+  );
+
   const defaultGridState: GridState = {
-    gridCells: map01,
+    gridCells: generateMapData(gridWidth, gridHeight, currentLevelData),
   };
 
   const [gridState, setGridState] = useState<GridState>(defaultGridState);
@@ -106,7 +111,32 @@ export function Grid({gridHeight, gridWidth}: GridProps) {
 
   return (
     <div>
-      <p className="text-end pb-6 text-2xl">{isStateLocked ? '🔒' : '🔓'}</p>
+      <div className="flex justify-between pb-6">
+        <div className="flex">
+          <select
+            name="selectLevel"
+            id="selectLevel"
+            onChange={(e) => {
+              setGridState({
+                gridCells: generateMapData(
+                  gridWidth,
+                  gridHeight,
+                  // @ts-ignore
+                  mapData[`map${e.target.value}`].default
+                ),
+              });
+              console.log(e.target.value);
+            }}
+          >
+            <option value="01">Level 1</option>
+            <option value="02">Level 2</option>
+            <option value="03">Level 3</option>
+          </select>
+        </div>
+        <div className="flex">
+          <p className="text-end text-2xl">{isStateLocked ? '🔒' : '🔓'}</p>
+        </div>
+      </div>
       <div className="border-collapse border-2 border-black">
         {gridState.gridCells.map((row, y) => (
           <div key={y} className="flex">

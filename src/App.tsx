@@ -1,11 +1,10 @@
 import {Grid} from './Grid';
+import {GRID_SIZE} from './constants';
 
 function App() {
-
-  
   return (
     <div className="container mx-auto p-10 flex justify-center">
-      <Grid gridHeight={10} gridWidth={10} />
+      <Grid gridHeight={GRID_SIZE} gridWidth={GRID_SIZE} />
     </div>
   );
 }
