@@ -16,7 +16,7 @@ export function AnimalSelectRadio({
   return (
     <div className="flex flex-col justify-center align-middle pt-4">
       <label htmlFor={animalName} className="flex flex-col text-center">
-        <span className="text-6xl text-center">{animalIcon}</span>
+        <span className="text-6xl text-center pb-2">{animalIcon}</span>
         <span>{animalName}</span>
       </label>
       <input
@@ -25,7 +25,11 @@ export function AnimalSelectRadio({
         name="animalType"
         id={animalName}
         onChange={(e) => {
-          if (e.target.checked) setSelectedAnimal(animalName);
+          if (e.target.checked) {
+            setSelectedAnimal(
+              animalName == PredatorName.Null ? null : animalName
+            );
+          }
         }}
       />
     </div>

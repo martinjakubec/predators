@@ -1,4 +1,3 @@
-import {GridCellState} from '../Grid';
 import {PredatorName} from '../Predators/predators';
 import {PreyName} from '../Prey/prey';
 

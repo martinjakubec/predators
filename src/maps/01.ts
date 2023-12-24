@@ -14,11 +14,11 @@ const map01: MapData = {
     },
     {
       animal: PreyName.Rabbit,
-      coordinates: [10, 12],
+      coordinates: [0, 0],
     },
     {
       animal: PreyName.Rabbit,
-      coordinates: [4, 10],
+      coordinates: [4, 9],
     },
   ],
 };

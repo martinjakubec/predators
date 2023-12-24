@@ -15,12 +15,14 @@ export enum PredatorName {
   Bear = 'Bear',
   Lion = 'Lion',
   Tiger = 'Tiger',
+  Null = 'None'
 }
 
 export enum PredatorIcon {
   Bear = '🐻',
   Lion = '🦁',
   Tiger = '🐯',
+  Null = '❌'
 }
 
 // ideas
