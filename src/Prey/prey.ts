@@ -1,3 +1,5 @@
+import {v4 as uuidv4} from 'uuid';
+
 export abstract class BasePrey {
   abstract name: string;
   abstract icon: string;
@@ -5,6 +7,7 @@ export abstract class BasePrey {
     x: number;
     y: number;
   };
+  uuid: string = uuidv4();
   abstract move(): {
     x: number;
     y: number;

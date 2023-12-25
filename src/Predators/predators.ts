@@ -1,3 +1,5 @@
+import {v4 as uuidv4} from 'uuid';
+
 export abstract class BasePredator {
   abstract name: string;
   abstract icon: string;
@@ -5,6 +7,7 @@ export abstract class BasePredator {
     x: number;
     y: number;
   };
+  uuid: string = uuidv4();
   abstract attackMove(): {
     x: number;
     y: number;
@@ -15,14 +18,14 @@ export enum PredatorName {
   Bear = 'Bear',
   Lion = 'Lion',
   Tiger = 'Tiger',
-  Null = 'None'
+  Null = 'None',
 }
 
 export enum PredatorIcon {
   Bear = '🐻',
   Lion = '🦁',
   Tiger = '🐯',
-  Null = '❌'
+  Null = '❌',
 }
 
 // ideas
