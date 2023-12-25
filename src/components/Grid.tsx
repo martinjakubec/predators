@@ -1,18 +1,12 @@
-import {useEffect, useState} from 'react';
 import {GridCell} from './GridCell';
-import {BasePredator, PredatorIcon, PredatorName} from '../Predators/predators';
-import {AnimalSelectRadio} from '../Radio';
-import {
-  getAnimalInstance,
-  getPredatorInstance,
-} from '../utils/getAnimalInstance';
-import {BasePrey, PreyIcon, PreyName} from '../Prey/prey';
-import {generateMapData} from '../maps/generateMapData';
-import {MapData} from '../maps/types';
-import * as mapData from '../maps';
+import {BasePredator, PredatorName} from '../Predators/predators';
+import {getAnimalInstance} from '../utils/getAnimalInstance';
+import {BasePrey} from '../Prey/prey';
 
 interface GridProps {
   state: GridState;
+  setState: React.Dispatch<React.SetStateAction<GridState>>;
+  selectedPredator: PredatorName | null;
 }
 
 export type GridCellState = {
@@ -24,13 +18,9 @@ export interface GridState {
   gridCells: GridCellState[][];
 }
 
-export function Grid({state}: GridProps) {
-  const [selectedAnimal, setSelectedAnimal] = useState<
-    PredatorName | PreyName | null
-  >(null);
-
+export function Grid({state, setState, selectedPredator}: GridProps) {
   function updateGridCell(gridX: number, gridY: number) {
-    setGridState((prevState) => {
+    setState((prevState) => {
       const newState: GridState = {
         ...prevState,
         gridCells: prevState.gridCells.map((row, y) => {
@@ -41,7 +31,7 @@ export function Grid({state}: GridProps) {
               } else if (
                 value &&
                 value.animal &&
-                value.animal.name === selectedAnimal &&
+                value.animal.name === selectedPredator &&
                 !value.locked
               ) {
                 return {
@@ -51,7 +41,7 @@ export function Grid({state}: GridProps) {
               } else {
                 return {
                   ...value,
-                  animal: getAnimalInstance(selectedAnimal, x, y),
+                  animal: getAnimalInstance(selectedPredator, x, y),
                 };
               }
             } else {
@@ -65,41 +55,20 @@ export function Grid({state}: GridProps) {
   }
 
   return (
-    <div>
-      <div className="border-collapse flex flex-col items-center">
-        {state.gridCells.map((row, y) => (
-          <div key={y} className="flex">
-            {row.map((value, x) => (
-              <GridCell
-                key={`${x}${y}`}
-                x={x}
-                y={y}
-                creature={value}
-                updateFunction={updateGridCell}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
-      <p className="pt-6">Selected animal: {selectedAnimal || 'none'}</p>
-      <p className="text-center font-bold text-2xl pt-6">Predators</p>
-      <div className="grid-cols-3 grid">
-        <AnimalSelectRadio
-          animalIcon={PredatorIcon.Bear}
-          animalName={PredatorName.Bear}
-          setSelectedAnimal={setSelectedAnimal}
-        />
-        <AnimalSelectRadio
-          animalIcon={PredatorIcon.Lion}
-          animalName={PredatorName.Lion}
-          setSelectedAnimal={setSelectedAnimal}
-        />
-        <AnimalSelectRadio
-          animalIcon={PredatorIcon.Tiger}
-          animalName={PredatorName.Tiger}
-          setSelectedAnimal={setSelectedAnimal}
-        />
-      </div>
+    <div className="border-collapse flex flex-col items-center">
+      {state.gridCells.map((row, y) => (
+        <div key={y} className="flex">
+          {row.map((value, x) => (
+            <GridCell
+              key={`${x}${y}`}
+              x={x}
+              y={y}
+              creature={value}
+              updateFunction={updateGridCell}
+            />
+          ))}
+        </div>
+      ))}
     </div>
   );
 }

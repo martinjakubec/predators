@@ -1,6 +1,7 @@
 import {MapData} from '../maps/types';
 import * as mapData from '../maps';
 import {GridState} from './Grid';
+import {generateMapData} from '../maps/generateMapData';
 
 interface ControlButtonProps extends React.PropsWithChildren<{}> {
   onClick: () => void;
@@ -18,25 +19,50 @@ function ControlButton({onClick, children}: ControlButtonProps) {
 }
 
 interface ControlButtonsProps {
+  currentLevelData: MapData;
   setCurrentLevelData: React.Dispatch<React.SetStateAction<MapData>>;
+  currentLevelNumber: string;
   setCurrentLevelNumber: React.Dispatch<React.SetStateAction<string>>;
   gridState: GridState;
+  setGridState: React.Dispatch<React.SetStateAction<GridState>>;
 }
 
 export function ControlButtons({
   setCurrentLevelData,
   setCurrentLevelNumber,
   gridState,
+  setGridState,
+  currentLevelData,
+  currentLevelNumber,
 }: ControlButtonsProps) {
   return (
-    <div className="pt-6 flex justify-between">
+    <div className="pt-6 grid grid-cols-2 gap-4">
       <ControlButton
         onClick={() => {
-          setCurrentLevelData(mapData['map01'].default);
-          setCurrentLevelNumber('01');
+          console.log('resetting app');
+          setTimeout(() => {
+            setCurrentLevelData(mapData['map01'].default);
+            setCurrentLevelNumber('01');
+            setGridState({
+              gridCells: generateMapData(mapData['map01'].default),
+            });
+          }, 500);
         }}
       >
-        Reset
+        Reset app
+      </ControlButton>
+      <ControlButton
+        onClick={() => {
+          setGridState({
+            gridCells: generateMapData(
+              // @ts-ignore-next-line
+              // This is ignored because the key is dynamic and TS doesn't like that
+              mapData[`map${currentLevelNumber}`].default
+            ),
+          });
+        }}
+      >
+        Reset level
       </ControlButton>
       <ControlButton
         onClick={() => {
