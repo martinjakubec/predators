@@ -22,4 +22,8 @@ export class Sheep extends BasePrey {
       y: 1,
     };
   }
+
+  turn(): void {
+    console.log('Sheep turn', this.uuid);
+  }
 }

@@ -1,4 +1,5 @@
 import {v4 as uuidv4} from 'uuid';
+import {GridState} from '../components/Grid';
 
 export abstract class BasePredator {
   abstract name: string;
@@ -12,6 +13,7 @@ export abstract class BasePredator {
     x: number;
     y: number;
   };
+  abstract turn(gridData: GridState): void;
 }
 
 export enum PredatorName {

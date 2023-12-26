@@ -1,4 +1,5 @@
 import {v4 as uuidv4} from 'uuid';
+import {GridState} from '../components/Grid';
 
 export abstract class BasePrey {
   abstract name: string;
@@ -8,10 +9,7 @@ export abstract class BasePrey {
     y: number;
   };
   uuid: string = uuidv4();
-  abstract move(): {
-    x: number;
-    y: number;
-  };
+  abstract move(grid: GridState): void;
 }
 
 export enum PreyName {

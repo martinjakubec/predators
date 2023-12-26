@@ -6,6 +6,7 @@ import {PreyName} from '../Prey/prey';
 import {Rabbit} from '../Prey/rabbit';
 import {Sheep} from '../Prey/sheep';
 import {Zebra} from '../Prey/zebra';
+import {GridCellState, GridState} from '../components/Grid';
 
 export function getPredatorInstance(
   predatorName: PredatorName | null,

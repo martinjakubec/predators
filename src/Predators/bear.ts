@@ -1,3 +1,4 @@
+import {GridState} from '../components/Grid';
 import {BasePredator, PredatorIcon, PredatorName} from './predators';
 
 export class Bear extends BasePredator {
@@ -21,5 +22,9 @@ export class Bear extends BasePredator {
       x: 3,
       y: 3,
     };
+  }
+
+  turn(): void {
+    console.log('Bear turn', this.uuid);
   }
 }

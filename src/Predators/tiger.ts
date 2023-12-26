@@ -22,4 +22,8 @@ export class Tiger extends BasePredator {
       y: 2,
     };
   }
+
+  turn(): void {
+    console.log('Tiger turn', this.uuid);
+  }
 }

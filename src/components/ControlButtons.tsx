@@ -32,11 +32,12 @@ export function ControlButtons({
   setCurrentLevelNumber,
   gridState,
   setGridState,
-  currentLevelData,
   currentLevelNumber,
 }: ControlButtonsProps) {
   return (
     <div className="pt-6 grid grid-cols-2 gap-4">
+      <ControlButton onClick={() => {}}>Next turn</ControlButton>
+      <div></div>
       <ControlButton
         onClick={() => {
           console.log('resetting app');

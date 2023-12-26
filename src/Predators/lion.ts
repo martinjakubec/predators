@@ -22,4 +22,8 @@ export class Lion extends BasePredator {
       y: 1,
     };
   }
+
+  turn(): void {
+    console.log('Lion turn', this.uuid);
+  }
 }

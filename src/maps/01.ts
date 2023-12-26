@@ -6,20 +6,40 @@ const map01: MapData = {
   data: [
     {
       animal: PreyName.Rabbit,
-      coordinates: [2, 4],
+      coordinates: [2, 2],
     },
-    {
-      animal: PreyName.Rabbit,
-      coordinates: [1, 3],
-    },
-    {
-      animal: PreyName.Rabbit,
-      coordinates: [0, 0],
-    },
-    {
-      animal: PreyName.Rabbit,
-      coordinates: [4, 9],
-    },
+    // {
+    //   animal: PreyName.Rabbit,
+    //   coordinates: [2, 3],
+    // },
+    // {
+    //   animal: PreyName.Rabbit,
+    //   coordinates: [3, 3],
+    // },
+    // {
+    //   animal: PreyName.Rabbit,
+    //   coordinates: [3, 2],
+    // },
+    // {
+    //   animal: PreyName.Rabbit,
+    //   coordinates: [4, 2],
+    // },
+    // {
+    //   animal: PreyName.Rabbit,
+    //   coordinates: [1, 2],
+    // },
+    // {
+    //   animal: PreyName.Rabbit,
+    //   coordinates: [1, 3],
+    // },
+    // {
+    //   animal: PreyName.Rabbit,
+    //   coordinates: [2, 4],
+    // },
+    // {
+    //   animal: PreyName.Rabbit,
+    //   coordinates: [4, 5],
+    // },
   ],
 };
 

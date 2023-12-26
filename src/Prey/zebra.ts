@@ -22,4 +22,8 @@ export class Zebra extends BasePrey {
       y: 1,
     };
   }
+
+  turn(): void {
+    console.log('Zebra turn', this.uuid);
+  }
 }
